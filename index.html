@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola Vue js</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3"></script>
+    <div id="app"></div>
+    <script>
+      const { createApp } = Vue
+
+      const vm = createApp({
+        data() {
+          return {
+            text: "<i>Conoce tu IP con VUE</i>",
+            user: {},
+          }
+        },
+        template: `
+            <div>
+                <h1 v-html="text" v-once></h1>
+                <p>Tu IP es: {{ user.ip }}</p>
+            </div>
+        `,
+        methods: {
+          getData() {
+            const ipInfo = fetch("https://jsonip.com", { mode: "cors" })
+              .then((resp) => resp.json())
+              .then((ip) => {
+                this.user = ip
+              })
+              .catch((error) => console.error(error))
+
+              return ipInfo;
+          },
+        },
+        mounted() {
+          this.getData();
+        },
+      }).mount("#app")
+
+    </script>
+  </body>
+</html>
