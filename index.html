@@ -15,42 +15,21 @@
       const vm = createApp({
         data() {
           return {
-            evt: 'click',
-            counter: 0
+            text: 'Hola Vue'
           }
         },
         methods: {
-          increment() {
-            this.counter++;
-          },
-          decrement() {
-            this.counter--;
-          },
-          submitForm(e) {
-            console.log(event);
-            window.localStorage.setItem('counter', this.counter);
-          },
-          renderCounter() {
-            const initialCounter = window.localStorage.getItem('counter');
-            if(initialCounter) {
-              this.counter = initialCounter;
-            }
+          init() {
+            console.log("Happy Hacking :-)")
           }
         },
         mounted() {
-          this.renderCounter()
+          this.init()
         },
         template: `
             <div>
-              <button v-on:click="decrement">-</button>
-              <span>{{ counter }}</span>
-              <button v-on:[evt]="increment">+</button>
-
-              <br><br>
-              <hr>
-              <form v-on:submit.prevent.stop="submitForm">
-                <button>Guardar</button>
-              </form>
+              <h3>{{ text }}</h3>
+              <input type="text" v-model="text" />
             </div>
         `
       }).mount("#app")
