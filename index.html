@@ -15,31 +15,17 @@
       const vm = createApp({
         data() {
           return {
-            text: "<i>Conoce tu IP con VUE</i>",
-            user: {},
+            attr: "src",
+            img: "https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ",
+            alt: "Imagen por defecto",
+            imgWidth: 400
           }
         },
         template: `
             <div>
-                <h1 v-html="text" v-once></h1>
-                <p>Tu IP es: {{ user.ip }}</p>
+                <img v-bind:[attr]="img" v-bind:alt="alt" v-bind:width="imgWidth">
             </div>
-        `,
-        methods: {
-          getData() {
-            const ipInfo = fetch("https://jsonip.com", { mode: "cors" })
-              .then((resp) => resp.json())
-              .then((ip) => {
-                this.user = ip
-              })
-              .catch((error) => console.error(error))
-
-              return ipInfo;
-          },
-        },
-        mounted() {
-          this.getData();
-        },
+        `
       }).mount("#app")
 
     </script>
