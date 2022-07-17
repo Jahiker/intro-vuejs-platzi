@@ -1,0 +1,22 @@
+# INTRODUCCION VUE
+
+## Directivas de vue:
+-- v-text: permite agregar texto a una etiqueta
+
+-- v-once: modifica la renderizacion reactiva y el elemento solo se renderiza una vez y no permite modificar el elemento
+
+-- v-html: funciona parecido a v-text solo que esta directiva adminte etiquetas HTML dentro del contenido (No es recomendable renderizar input con esta directiva por seguridad)
+
+## Atributos reactivos
+-- v-bind: nos permite modificar los atributos de los componentes HTML de forma reactiva => <img b-bind:src="" >
+-- si el atributo va a ser modificado de forma dinamica se debe encerrar entre corchetes => <img v-bind:["src"]="img">
+
+## Eventos
+-- v-on: es la directiva que se utiliza para agregar eventos a los elementos => <button v-on:click="">{{ counter }}</button>
+-- v-on:submit.prevent => preventDefault()
+-- v-on:submit.stop => stopProtagation()
+
+## Abreviacion de Directivas
+-- Para eventos se usa @ => v-on:click === @click 
+-- para atributos se usa : => v-bind:value === :value 
+-- v-model === v-bind + @input
