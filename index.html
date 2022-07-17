@@ -15,15 +15,42 @@
       const vm = createApp({
         data() {
           return {
-            attr: "src",
-            img: "https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ",
-            alt: "Imagen por defecto",
-            imgWidth: 400
+            evt: 'click',
+            counter: 0
           }
+        },
+        methods: {
+          increment() {
+            this.counter++;
+          },
+          decrement() {
+            this.counter--;
+          },
+          submitForm(e) {
+            console.log(event);
+            window.localStorage.setItem('counter', this.counter);
+          },
+          renderCounter() {
+            const initialCounter = window.localStorage.getItem('counter');
+            if(initialCounter) {
+              this.counter = initialCounter;
+            }
+          }
+        },
+        mounted() {
+          this.renderCounter()
         },
         template: `
             <div>
-                <img v-bind:[attr]="img" v-bind:alt="alt" v-bind:width="imgWidth">
+              <button v-on:click="decrement">-</button>
+              <span>{{ counter }}</span>
+              <button v-on:[evt]="increment">+</button>
+
+              <br><br>
+              <hr>
+              <form v-on:submit.prevent.stop="submitForm">
+                <button>Guardar</button>
+              </form>
             </div>
         `
       }).mount("#app")
