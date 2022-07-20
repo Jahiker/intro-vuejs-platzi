@@ -15,9 +15,8 @@
       const vm = createApp({
         data() {
           return {
-            firstName: "Jahiker",
-            lastName: "Rojas",
-            now: new Date()
+            text: "Puerta cerrada",
+            open: false
           }
         },
         methods: {
@@ -25,12 +24,18 @@
             console.log("Happy Hacking ;-)")
           }
         },
+        watch: {
+          open(value) {
+            if(!!value) {
+              this.text = "Puerta abierta";
+            } else {
+              this.text = "Puerta cerrada";
+            }
+          }
+        },
         computed: {
-          fullName() {
-            return `${this.firstName} ${this.lastName}`
-          },
-          formatNow() {
-            return this.now.toLocaleDateString();
+          label() {
+            return !!this.open ? "Cerrar" : "Abrir"
           }
         },
         mounted() {
@@ -38,8 +43,8 @@
         },
         template: `
             <div>
-              <div>{{ fullName }}</div>
-              <div>{{ formatNow }}</div>
+              <div>{{ text }}</div>
+              <button @click="open = !open">{{ label }}</button>
             </div>
         `
       }).mount("#app")

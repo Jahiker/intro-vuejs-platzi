@@ -25,3 +25,10 @@
 -- Son propiedades que dependen de 1 o varias propiedades base y retornan un nuevo valor
 -- Son totalmente reactivas, al modificar una propiedad base, se modifica la propiedad computada automaticamente
 -- Estas a diferencia de los metodos no necesitan ser ejecutadas para mostrar las modificaciones
+
+## Watcher:
+-- Sirven para obervar la reactividad o cuando cambia una propiedad 
+-- Deben tener el mismo nombre de la variable que quieres escuchar
+-- reciben como primer argumento el nuevo valor de la variable observada
+-- reciben como segundo argumento el antiguo valor de la variable observada
+-- es importante que nos watcher no tengas logicas muy completas
