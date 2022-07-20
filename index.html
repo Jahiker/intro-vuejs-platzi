@@ -15,12 +15,13 @@
       const vm = createApp({
         data() {
           return {
-            text: 'Hola Vue'
+            firstName: "Jahiker",
+            lastName: "Rojas"
           }
         },
         methods: {
           init() {
-            console.log("Happy Hacking :-)")
+            console.log("Happy Hacking ;-)")
           }
         },
         mounted() {
@@ -28,8 +29,7 @@
         },
         template: `
             <div>
-              <h3>{{ text }}</h3>
-              <input type="text" v-model="text" />
+              <div>{{ firstName }} {{ lastName }}</div>
             </div>
         `
       }).mount("#app")
