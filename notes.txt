@@ -20,3 +20,8 @@
 -- Para eventos se usa @ => v-on:click === @click 
 -- para atributos se usa : => v-bind:value === :value 
 -- v-model === v-bind + @input
+
+## Propiedades computadas:
+-- Son propiedades que dependen de 1 o varias propiedades base y retornan un nuevo valor
+-- Son totalmente reactivas, al modificar una propiedad base, se modifica la propiedad computada automaticamente
+-- Estas a diferencia de los metodos no necesitan ser ejecutadas para mostrar las modificaciones

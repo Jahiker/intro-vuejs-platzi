@@ -16,7 +16,8 @@
         data() {
           return {
             firstName: "Jahiker",
-            lastName: "Rojas"
+            lastName: "Rojas",
+            now: new Date()
           }
         },
         methods: {
@@ -24,12 +25,21 @@
             console.log("Happy Hacking ;-)")
           }
         },
+        computed: {
+          fullName() {
+            return `${this.firstName} ${this.lastName}`
+          },
+          formatNow() {
+            return this.now.toLocaleDateString();
+          }
+        },
         mounted() {
           this.init()
         },
         template: `
             <div>
-              <div>{{ firstName }} {{ lastName }}</div>
+              <div>{{ fullName }}</div>
+              <div>{{ formatNow }}</div>
             </div>
         `
       }).mount("#app")
