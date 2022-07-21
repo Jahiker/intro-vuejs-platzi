@@ -32,3 +32,7 @@
 -- reciben como primer argumento el nuevo valor de la variable observada
 -- reciben como segundo argumento el antiguo valor de la variable observada
 -- es importante que nos watcher no tengas logicas muy completas
+
+## Condicionales
+-- v-if="condition" => condiciona el elemento a mostrarse si se cumple la condicion 
+-- v-else => siempre va acompañado del v-if y renderiza el elemento en caso de que no se cumpla la condicion del v-if 

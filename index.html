@@ -15,8 +15,9 @@
       const vm = createApp({
         data() {
           return {
-            text: "Puerta cerrada",
+            text: "Iniciar sesión",
             open: false,
+            username: ""
           }
         },
         methods: {
@@ -27,16 +28,14 @@
         watch: {
           open(value) {
             if (!!value) {
-              this.text = "Puerta abierta";
+              this.text = "Cerrar sesión";
             } else {
-              this.text = "Puerta cerrada";
+              this.text = "Iniciar sesión";
+              this.username = "";
             }
           },
         },
         computed: {
-          label() {
-            return !!this.open ? "Cerrar" : "Abrir";
-          },
           classStyle() {
             return !!this.open ? "open" : "closed";
           }
@@ -47,7 +46,19 @@
         template: `
             <div class="container" :class="classStyle">
               <h2>{{ text }}</h2>
-              <button @click="open = !open">{{ label }}</button>
+
+              <div v-if="open">
+                <p>Hola, {{ username }}</p>  
+              </div>
+              <div v-else>
+                <label>Username</label>
+                <input type="tetx" v-model="username" />
+              </div>
+
+              <button @click="open = !open">
+                <span v-if="!open">Acceder</span>
+                <span v-else>Salir</span>
+              </button>
             </div>
         `,
       }).mount("#app")
