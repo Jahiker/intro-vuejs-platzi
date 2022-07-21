@@ -36,3 +36,7 @@
 ## Condicionales
 -- v-if="condition" => condiciona el elemento a mostrarse si se cumple la condicion 
 -- v-else => siempre va acompañado del v-if y renderiza el elemento en caso de que no se cumpla la condicion del v-if 
+
+## Iteraciones
+-- v-for: esta directiva nos permite hacer un ciclo for sobre un array.
+-- para identificar los elementos se utiliza el atributo :key el cual debe contener un valor unico que lo permita identificar entre todos los elementos de la lista

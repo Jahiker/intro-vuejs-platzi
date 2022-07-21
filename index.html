@@ -17,7 +17,25 @@
           return {
             text: "Iniciar sesión",
             open: false,
-            username: ""
+            username: "",
+            posts: [
+              {
+                title: "Titulo 1",
+                description: "Esto es un contenido de prueba..."
+              },
+              {
+                title: "Titulo 2",
+                description: "Esto es un contenido de prueba..."
+              },
+              {
+                title: "Titulo 3",
+                description: "Esto es un contenido de prueba..."
+              },
+              {
+                title: "Titulo 4",
+                description: "Esto es un contenido de prueba..."
+              }
+            ]
           }
         },
         methods: {
@@ -48,7 +66,13 @@
               <h2>{{ text }}</h2>
 
               <div v-if="open">
-                <p>Hola, {{ username }}</p>  
+                <p>Hola, {{ username }}</p>
+                <div class="list" >
+                  <div class="item" v-for="(item, index) in posts" :key="index">
+                    <div class="title">{{ item.title }}</div>
+                    <p>{{ item.description }}</p>
+                  </div>  
+                </div>
               </div>
               <div v-else>
                 <label>Username</label>
@@ -92,6 +116,19 @@
       }
       .open {
         background-color: #b5e7a0;
+      }
+      .list {
+        display: flex;
+        flex-direction: column;
+      } 
+      .item {
+        border: 1px solid #000;
+        padding: 10px;
+        margin-bottom: 5px;
+      }
+      .title {
+        font-weight: bold;
+        font-size: 1.3rem;
       }
     </style>
   </body>
