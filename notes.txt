@@ -40,3 +40,10 @@
 ## Iteraciones
 -- v-for: esta directiva nos permite hacer un ciclo for sobre un array.
 -- para identificar los elementos se utiliza el atributo :key el cual debe contener un valor unico que lo permita identificar entre todos los elementos de la lista
+
+## Props 
+-- props: ["name"] => es la forma de pasar valores de un componente padre a un componente hijo
+
+## Slot
+-- slot: es otra forma de pasar contenido a un componente hijo
+-- el slot le pasa al hijo todo el contenido interno
