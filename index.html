@@ -18,6 +18,7 @@
             text: "Iniciar sesión",
             open: false,
             username: "",
+            newPost: "",
             posts: [
               {
                 title: "Titulo 1",
@@ -42,6 +43,18 @@
           init() {
             console.log("Happy Hacking ;-)")
           },
+          post() {
+            if (this.newPost) {
+              const post = {
+                title: this.username ? `@${this.username}` : '@newUser',
+                description: this.newPost
+              }
+
+              this.posts.push(post);
+
+              this.newPost = '';
+            }
+          }
         },
         watch: {
           open(value) {
@@ -67,6 +80,12 @@
 
               <div v-if="open">
                 <p>Hola, {{ username }}</p>
+
+                <form class="add-post" @submit.prevent="post">
+                  <input type="text" name="post" placeholder="Nuevo post" v-model="newPost" />
+                  <button type=submit >Publicar</button>
+                </form>
+
                 <div class="list" >
                   <div class="item" v-for="(item, index) in posts" :key="index">
                     <div class="title">{{ item.title }}</div>
@@ -129,6 +148,22 @@
       .title {
         font-weight: bold;
         font-size: 1.3rem;
+      }
+      .add-post {
+        border: 1px solid #000;
+        margin-bottom: 25px;
+        padding: 20px 10px;
+      }
+
+      button[type="submit"] {
+        margin: 0;
+      }
+
+      .add-post input[type="text"] {
+        height: 30px;
+        border: none;
+        border-radius: 12px;
+        background-color: #e8e8e8;
       }
     </style>
   </body>
