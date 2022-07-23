@@ -12,7 +12,7 @@
     <script>
       const { createApp } = Vue
 
-      const vm = createApp({
+      const app = createApp({
         data() {
           return {
             text: "Iniciar sesión",
@@ -76,9 +76,11 @@
         },
         template: `
             <div class="container" :class="classStyle">
+
               <h2>{{ text }}</h2>
 
               <div v-if="open">
+
                 <p>Hola, {{ username }}</p>
 
                 <form class="add-post" @submit.prevent="post">
@@ -87,12 +89,15 @@
                 </form>
 
                 <div class="list" >
-                  <div class="item" v-for="(item, index) in posts" :key="index">
-                    <div class="title">{{ item.title }}</div>
-                    <p>{{ item.description }}</p>
-                  </div>  
+                  <item 
+                    v-for="(item, index) in posts" 
+                    :key="index"
+                    :post="item"
+                  />
                 </div>
+
               </div>
+
               <div v-else>
                 <label>Username</label>
                 <input type="tetx" v-model="username" />
@@ -102,9 +107,22 @@
                 <span v-if="!open">Acceder</span>
                 <span v-else>Salir</span>
               </button>
+
             </div>
         `,
-      }).mount("#app")
+      });
+
+      app.component("item", {
+        props: ["post"],
+        template: `
+          <div class="item">
+            <div class="title">{{ post.title }}</div>
+            <p>{{ post.description }}</p>
+          </div> 
+        `
+      })
+
+      const vm = app.mount("#app");
     </script>
 
     <style>
