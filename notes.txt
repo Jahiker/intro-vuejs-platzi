@@ -54,3 +54,9 @@
 
 ## Deep components 
 -- Son componentes que no son descendientes directos del padre 
+
+## Instancias
+-- $root => accede al componente principal 
+-- $el => accede al html del componente principal 
+-- $ref => permite accede a un elemento que contenga una referencia 
+-- $props => permite acceder a las props del componente 

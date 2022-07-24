@@ -7,7 +7,8 @@
     <title>Hola Vue js</title>
   </head>
   <body>
-    <script src="https://unpkg.com/vue@3"></script>
+    <!-- <script src="https://unpkg.com/vue@3"></script> -->
+    <script src="./vue.min.js"></script>
     <div id="app"></div>
     <script>
       const { createApp } = Vue
@@ -18,33 +19,18 @@
             text: "Hola Vue"
           }
         },
-        provide() {
-          return {
-            otroTexto: this.text
-          }
-        },
         template: `
-          <div>
-            {{ text }}
-            <otro />
-          </div>
+          <v-button ref="elemento" :label="text" />
         `
       });
 
-      app.component("otro", {
-        template: `<tercer />`
-      })
-
-      app.component("tercer", {
-        inject: {
-          otroTexto: {
-            from: "otroTexto"
-          }
-        },
-        template: `<div>{{ otroTexto }}</div>`
+      app.component("v-button", {
+        props: ["label"],
+        template: `<button>{{ label }}</button>`
       })
 
       const vm = app.mount("#app");
+      console.log("🚀 ~ file: index.html ~ line 28 ~ vm", vm);
     </script>
 
     <style>
