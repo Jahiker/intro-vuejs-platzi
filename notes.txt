@@ -47,3 +47,7 @@
 ## Slot
 -- slot: es otra forma de pasar contenido a un componente hijo
 -- el slot le pasa al hijo todo el contenido interno
+
+## Emit
+-- this.$emit("eventName", data) => sirve para crear eventos custom
+-- mediante los eventos custom podemos enviar informacion de los componentes hijos a los componentes padres

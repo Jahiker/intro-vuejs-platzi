@@ -13,35 +13,42 @@
       const { createApp } = Vue
 
       const app = createApp({
+        data() {
+          return {
+            items: ["Item 1", "Item 2", "Item 3"]
+          }
+        },
+        methods: {
+          remove(i) {
+            this.items = this.items.filter((el, index) => index !== i);
+          }
+        },
         template: `
             <div>
-              <v-header>
-
-                <template v-slot:title>
-                  <span>Titulo</span>
-                </template>
-
-                <template v-slot:menu>
-                  <a href="#">Menu</a>
-                </template>
-
-              </v-header>
-              <div>Lorem ipsum dolor</div>
+              <ul>
+                <v-item 
+                  v-for="(item, index) in items" 
+                  v-bind:text="item"
+                  v-on:remove="remove(index)"
+                />
+              </ul>
             </div>
         `,
       });
 
-      app.component("v-header", {
+      app.component("v-item", {
+        props: {
+          text: String
+        },
+        methods: {
+          rm() {
+            this.$emit("remove");
+          }
+        },
         template: `
-          <header>
-
-            <slot name="title"></slot>
-
-            <slot name="menu"></slot>
-            
-          </header>
+          <li v-on:click="rm">{{ text }}</li>
         `
-      });
+      })
 
       const vm = app.mount("#app");
     </script>
